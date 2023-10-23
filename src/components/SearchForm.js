@@ -4,7 +4,7 @@ import Form from "react-bootstrap/Form";
 import { useState } from "react";
 import { buildUrl } from "../utils/buildUrl";
 
-export const SearchForm = () => {
+export const SearchForm = ({ onSuccess }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchType, setSearchType] = useState("organisation");
   const [formError, setFormError] = useState(false);
@@ -30,7 +30,7 @@ export const SearchForm = () => {
       setFormError(true);
     } else {
       const url = buildUrl(searchTerm, searchType);
-      console.log(url);
+      onSuccess(url);
     }
   };
 
